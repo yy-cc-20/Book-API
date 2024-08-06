@@ -1,5 +1,14 @@
-# Book API
+# Library Management System API
 This RESTful API allows clients to register, update, delete, and retrieve information about books.
+
+## Table of Contents
+- [Features](#features)
+- [Technology Used](#technology-used)
+- [Installation](#installation)
+- [Design Pattern](#design-pattern)
+- [Database Design](#database-design)
+- [API Endpoints](#api-endpoints)
+- [Log File](#log-file)
 
 ## Features
 - Create a new book
@@ -27,12 +36,24 @@ This RESTful API allows clients to register, update, delete, and retrieve inform
 3. Install any necessary NuGet packages
 4. Create a MySQL database and insert fake data using the sql script in `DatabaseMigration` directory
 5. Update the database connection string, userid and password in the `appsettings.json` file
-6. change the log file directory in `nlog.config`
+6. Change the log file directory in `nlog.config`
 7. Run the application
 8. The API will be available at `https://localhost:7030/api/book`.
 
 ## Design Pattern
 This project follows the repository pattern to ensure maintainability and scalability.
+
+## Database Design
+Category
+- id: GUID (PK)
+- name: VARCHAR(45)
+
+
+Book
+- id: GUID (PK)
+- name: VARCHAR(45)
+- author: VARCHAR(45)
+- category_id: GUID (FK)
 
 ## API Endpoints
 
@@ -143,4 +164,16 @@ X-Pagination: {
 
 * **GET** `api/book?orderBy={orderByQueryString}`
 * Example Request: `GET api/book?orderBy=name,category_id desc`
+
+## Log File
+Log file location: `LibraryManagementSystem\Logs\[Date]_logfile.txt`
+
+
+Example log record:
+* 2024-07-26 17:25:03.2086 INFO Create book with id: 08dcad54-d3e4-4ce1-8be3-d43053e8ed09
+* 2024-07-26 17:25:19.7825 INFO Returned book with id: 08dcad54-d3e4-4ce1-8be3-d43053e8ed09
+* 2024-07-26 17:25:53.9957 INFO Update book with id: 08dcad54-d3e4-4ce1-8be3-d43053e8ed09
+* 2024-07-26 17:26:07.3571 INFO Delete book with id: 08dcad54-d3e4-4ce1-8be3-d43053e8ed09
+* 2024-07-26 17:26:25.3391 INFO Returned 13 books from database.
+* 2024-07-26 17:27:02.0288 INFO Returned 1 books from database.
 
