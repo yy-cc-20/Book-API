@@ -145,12 +145,13 @@ X-Pagination: {
 }
 ```
 
-### Get Books by Author
+### Filter Books
+##### Get Books by Author
 
 * **GET** `api/book?author={author}`
 * Example Request: `GET api/book?author=Jane Austen`
 
-### Get Books by Category
+##### Get Books by Category
 
 * **GET** `api/book?category_id={category_id}`
 * Example Request: `GET api/book?category_id=289ac3de-1cf3-4a0d-8795-f6e9b48b9ddb`
